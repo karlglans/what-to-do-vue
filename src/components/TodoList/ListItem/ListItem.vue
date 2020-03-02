@@ -3,6 +3,7 @@
     @mouseover="hover = true"
     @mouseleave="hover = false"
     v-on:dblclick="$emit('focus-todo', note.id)">
+    <Checkbox v-if="activeNote !== note.id" v-bind:note="note"/>
     <label
       class="todo"
       v-if="activeNote !== note.id"
@@ -18,7 +19,6 @@
       v-if="hover && activeNote !== note.id"
       @click.native="$emit('removeTodo', note.id)"
     />
-    <Checkbox v-if="activeNote !== note.id" v-bind:note="note"/>
   </li>
 </template>
 
@@ -46,7 +46,7 @@ label {
   cursor: default;
   display: table-cell;
   color: #4d4d4d;
-  padding: 15px 15px 15px 0;
+  padding: 15px 15px 15px 60px;
 }
 .completed {
   color: #d9d9d9;
@@ -58,9 +58,8 @@ li {
   position: relative;
   /* display: block; */
   display: list-item;
-  height: 58px;
+  min-height: 58px;
   width: 100%;
-  padding-left: 60px;
 }
 /* li button {
   position: absolute;

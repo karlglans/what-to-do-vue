@@ -25,7 +25,7 @@ import Footer from './Footer'
 @Component({name: 'TodoList', components: {List, Footer, Input}})
 export default class TodoList extends Vue {
   todos = [
-    new Note('the message1', true),
+    new Note('Detta är ett extra långt meddelande till hela almänheten, som borde ha tagits på störta alvar', true),
     new Note('the message2', false),
     new Note('the message3', true),
   ]
