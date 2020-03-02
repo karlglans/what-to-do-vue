@@ -34,11 +34,13 @@ export default class Edit extends Vue {
   box-sizing: border-box;
   font-size: 22px;
   color: #4d4d4d;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   display: table-cell;
-  padding-left: 20px;
+  padding: 0 20px;
+  position: absolute;
+  left: 40px;
   height: 58px;
-  width: 490px;
+  width: calc(100% - 40px);
   border: 1px solid #777777;
   -moz-box-shadow:    inset 0 0 10px #999;
   -webkit-box-shadow: inset 0 0 10px #999;

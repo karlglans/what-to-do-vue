@@ -17,8 +17,9 @@ export default class Checkbox extends Vue {
 <style>
 .delete-button {
   position: absolute;
-  right: 80px;
-  top: 25px;
+  right: 25px;
+  top: 0;
+  bottom: 0;
   border: none;
   background-color: transparent;
   cursor: pointer;

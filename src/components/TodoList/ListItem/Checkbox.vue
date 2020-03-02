@@ -20,7 +20,8 @@ export default class Edit extends Vue {
 .checkbox-round {
   position: absolute;
   left: 10px;
-  top: 13px;
+  top: calc(50% - 1.5em);
+  /* bottom: 13px; */
   width: 2.1em;
   height: 2.1em;
   background-color: white;
@@ -41,7 +42,7 @@ export default class Edit extends Vue {
   color: #5DC2AF;
   position: absolute;
   left: 1.2rem;
-  top: 0.8rem;
+  top: calc(50% - 20px);
   pointer-events: none;
 }
 
