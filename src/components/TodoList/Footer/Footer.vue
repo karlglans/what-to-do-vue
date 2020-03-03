@@ -38,11 +38,30 @@ footer {
   bottom: 0;
   text-align: center;
   font-size: 14px;
-  /* background-color: green; */
   color: #777777;
-  height: 18px;
-  padding: 10px 15px; 
+  height: 44px;
+  padding: 10px 15px;
 }
+
+footer::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 430px) {
+  footer {
+    height: 18px;
+  }
+}
+
 .clear-button {
   height: 20px;
   padding: 3px 7px;

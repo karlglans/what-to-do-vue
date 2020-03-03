@@ -1,5 +1,5 @@
 <template>
-  <span class="counter">{{count()}} items left</span>
+  <span class="counter">{{outputText()}}</span>
 </template>
 
 <script lang="ts">
@@ -11,8 +11,10 @@ export default class Footer extends Vue {
   @Prop({required: true})
   notes!: Array<Note>
 
-  count() {
-    return this.notes.filter(n => !n.compleated).length
+  outputText() {
+    const nNotes = this.notes.filter(note => !note.compleated).length
+    if (nNotes == 1) return '1 item left'
+    else return `${nNotes} items left`
   }
 }
 </script>
@@ -20,8 +22,6 @@ export default class Footer extends Vue {
 <style scoped>
 .counter {
   display: block;
-  /* background-color: red; */
-  /* border: 1px solid black; */
   height: 20px;
   padding: 3px 7px;
   position: relative;

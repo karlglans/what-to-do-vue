@@ -46,6 +46,7 @@ label {
   cursor: default;
   display: table-cell;
   color: #4d4d4d;
+  font-size: 24px;
   padding: 15px 15px 15px 60px;
 }
 .completed {

@@ -18,11 +18,6 @@ export default class App extends Vue {
 </script>
 
 <style>
-#app-inner {
-  max-width: 550px;
-  margin: 0 auto;
-}
-
 body, h1, h2, h3, h4, h5, h6, p, ol, ul, label {
   margin: 0;
   padding: 0;
@@ -37,6 +32,11 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul, label {
   background-color: #f5f5f5;
   height: calc(100vh);
   width: 100%;
+}
+
+#app-inner {
+  max-width: 550px;
+  margin: 0 auto;
 }
 
 #app-inner > h1 {
