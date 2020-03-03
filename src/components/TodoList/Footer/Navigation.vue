@@ -24,6 +24,13 @@ ul {
   vertical-align: middle;
   display: table-cell;
   background-color: transparent;
+  margin-top: 2em;
+}
+
+@media screen and (min-width: 430px) {
+  ul {
+    margin-top: 0;
+  }
 }
 
 .router-link-exact-active {
