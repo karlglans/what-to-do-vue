@@ -1,9 +1,15 @@
 <template>
   <li
     @mouseover="hover = true"
-    @mouseleave="hover = false"
-    v-on:dblclick="$emit('focus-todo', note.id)">
-    <Checkbox v-if="activeNote !== note.id" v-bind:note="note"/>
+    @mouseleave="hover = false" noteIsChanged
+    v-on:dblclick="$emit('focus-todo', note.id)"
+  >
+    <Checkbox
+      v-if="activeNote !== note.id"
+      v-bind:note="note"
+      v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
+    />
+    <!-- @click.native="$emit('noteIsChanged', note.id)" -->
     <label
       class="todo"
       v-if="activeNote !== note.id"
