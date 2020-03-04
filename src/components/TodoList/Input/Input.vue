@@ -2,7 +2,7 @@
   <div class="todo-input-wrapper">
     <form v-on:submit='handleSubmit'>
       <Checkbox
-        v-bind:markChecked="isCompleatedChecked"
+        v-bind:markChecked="allNotsSelected"
         v-on:markAllCompealted="setMarkCompleated"
       />
       <input
@@ -16,7 +16,7 @@
 
 <script lang='ts'>
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Note from '../../../models/Note';
+import Note from '@/models/Note';
 import Checkbox from './Checkbox.vue';
 
 @Component({name: 'Input', components: {Checkbox}})
@@ -24,20 +24,15 @@ export default class ListItem extends Vue {
   @Prop({required: true})
   note!: Note
 
-  markCompleteAll = false // keeps the state of the checkbox
+  @Prop({required: true})
+  allNotsSelected!: boolean
 
   setMarkCompleated(isChecked: boolean) {
     this.$emit('checkboxChanged', isChecked)
-    this.markCompleteAll = isChecked;
-  }
-
-  get isCompleatedChecked() {
-    return this.markCompleteAll
   }
 
   handleSubmit(e: Event) {
     e.preventDefault()
-    this.markCompleteAll = false;
     if (this.note.msg.length > 0) {
       this.$emit('create-todo')
     }
