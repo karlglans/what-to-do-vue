@@ -15,7 +15,7 @@ export default class Edit extends Vue {
   note!: Note
 
   @Watch('note.compleated')
-  whatchCompleated() {
+  whatchIt(compleated: boolean) {
     this.$emit('noteIsChanged', this.note.id)
   }
 }

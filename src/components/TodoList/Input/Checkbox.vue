@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Note from '../../../models/Note';
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import Note from '@/models/Note';
 
 @Component({name: 'TodoCheckbox'})
 export default class Checkbox extends Vue {
@@ -24,7 +24,6 @@ export default class Checkbox extends Vue {
   set checked(value) {
     this.$emit('markAllCompealted', !this.markChecked)
   }
-
 }
 </script>
 

@@ -1,5 +1,3 @@
-import Data from './Data';
-
 let _nextId = 1;
 
 class Note {
@@ -27,7 +25,6 @@ class Note {
     this.compleated = !this.compleated;
   }
   static setNextId(id: number) {
-    console.log('Note:setNextId', id)
     _nextId = id
   }
   static stepUpId() {

@@ -2,6 +2,7 @@
   <section id="todo-list">
     <Input
       v-bind:note="inputNote"
+      v-bind:allNotsSelected="allNotesSelected()"
       v-on:checkboxChanged="changeCompleateStatusForAll"
       v-on:create-todo="createNote"/>
     <List
@@ -17,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import NoteStoreService, {sortAscId} from '../../services/NoteStoreService';
+import NoteStoreService, {sortAscId} from '@/services/NoteStoreService'
 import { Component, Vue } from 'vue-property-decorator'
 import Note from '@/models/Note'
 import Input from './Input'
@@ -32,6 +33,11 @@ export default class TodoList extends Vue {
 
   get notes() {
     return this.todos
+  }
+
+  allNotesSelected() {
+    const incompleate = this.notes.find(note => !note.compleated) == undefined
+    return incompleate
   }
 
   changeCompleateStatusForAll(compleated: boolean) {
