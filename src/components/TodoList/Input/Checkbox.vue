@@ -9,8 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import Note from '@/models/Note';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({name: 'TodoCheckbox'})
 export default class Checkbox extends Vue {
