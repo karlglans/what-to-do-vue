@@ -1,18 +1,23 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <input type="checkbox" id="checkbox" v-model="note.compleated" class="checkbox-round"/>
      <span></span>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import Note from '../../../models/Note';
 
 @Component({name: 'TodoCheckbox'})
 export default class Edit extends Vue {
   @Prop({required: true})
   note!: Note
+
+  @Watch('note.compleated')
+  whatchCompleated() {
+    this.$emit('noteIsChanged', this.note.id)
+  }
 }
 </script>
 

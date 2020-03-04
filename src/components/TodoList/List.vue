@@ -5,6 +5,7 @@
         v-bind:activeNote="activeNote"
         v-on:focus-todo="focusTodo"
         v-on:removeTodo="$emit('removeTodo', note.id)"
+        v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
         v-on:removeFocusOnTodo="removeFocusOnTodo"
       />
     </ul>
@@ -26,7 +27,12 @@ export default class List extends Vue {
     this.activeNote = id
   }
 
+  // testAAA(id: number) {
+  //   console.log('testAAA', id)
+  // }
+
   removeFocusOnTodo() {
+    this.$emit('noteIsChanged', this.activeNote)
     this.activeNote = -1;
   }
 
