@@ -4,7 +4,12 @@
     @mouseleave="hover = false" noteIsChanged
     v-on:dblclick="$emit('focus-todo', note.id)"
   >
-    <Checkbox
+    <!-- <Checkbox
+      v-if="activeNote !== note.id"
+      v-bind:note="note"
+      v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
+    /> -->
+    <CheckboxSvg
       v-if="activeNote !== note.id"
       v-bind:note="note"
       v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
@@ -29,13 +34,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Note from '../../../models/Note';
-import Edit from './Edit.vue';
-import Checkbox from './Checkbox.vue';
-import DeleteButton from './DeleteButton.vue';
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import Note from '@/models/Note'
+import Edit from './Edit.vue'
+// import Checkbox from './Checkbox.vue';
+import DeleteButton from './DeleteButton.vue'
+import CheckboxSvg from './Checkbox'
 
-@Component({name: 'ListItem', components: {Edit, Checkbox, DeleteButton}})
+@Component({name: 'ListItem', components: {Edit, DeleteButton, CheckboxSvg}})
 export default class ListItem extends Vue {
   @Prop({required: true})
   note!: Note
