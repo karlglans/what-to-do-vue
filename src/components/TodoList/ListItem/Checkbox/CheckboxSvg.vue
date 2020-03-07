@@ -1,37 +1,37 @@
 <template>
   <div class="container" >
-    <input type="checkbox" id="checkbox" v-model="note.compleated" class="checkbox-round"/>
-     <span></span>
+    <CheckboxChecked v-if="note.compleated" />
+    <Unchecked v-if="!note.compleated" />
+    <input type="checkbox" id="checkbox" v-model="note.compleated" class="hitbox-round"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import Note from '../../../models/Note';
+import Note from '@/models/Note';
+import CheckboxChecked from './CheckSvg.vue'
+import Unchecked from './Unchecked.vue'
 
-@Component({name: 'TodoCheckbox'})
+@Component({name: 'TodoCheckbox', components: {CheckboxChecked, Unchecked}})
 export default class Edit extends Vue {
   @Prop({required: true})
   note!: Note
 
   @Watch('note.compleated')
-  whatchIt() {
+  whatchIt(){
     this.$emit('noteIsChanged', this.note.id)
   }
 }
 </script>
 
 <style scoped>
-.checkbox-round {
+.hitbox-round {
   position: absolute;
-  left: 10px;
-  top: calc(50% - 1.5em);
-  /* bottom: 13px; */
+  left: 12px;
+  top: calc(50% - 1.25em);
   width: 2.1em;
   height: 2.1em;
-  background-color: white;
   border-radius: 50%;
-  border: 1px solid #ddd;
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
@@ -40,18 +40,9 @@ export default class Edit extends Vue {
   cursor: pointer;
 }
 
-.container > input:checked + span::before {
-  content: '\2713';
-  display: block;
-  text-align: center;
-  color: #5DC2AF;
+.checkbox-checked-svg {
   position: absolute;
-  left: 1.2rem;
-  top: calc(50% - 20px);
-  pointer-events: none;
-}
-
-.checkbox-round:checked {
-  border: 1px solid #AEE0D7;
+  left: 10px;
+  top: calc(50% - 0.85em);
 }
 </style>
