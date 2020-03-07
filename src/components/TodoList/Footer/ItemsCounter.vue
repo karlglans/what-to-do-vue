@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import Note from '../../../models/Note';
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import Note from '@/models/Note'
 
 @Component({name: 'ItemsCounter'})
 export default class Footer extends Vue {
@@ -21,12 +21,9 @@ export default class Footer extends Vue {
 
 <style scoped>
 .counter {
-  display: block;
-  height: 20px;
+  justify-self: self-start;
+  align-self: center;
   padding: 3px 7px;
-  position: relative;
-  float: left;
   font-size: 14px;
-  text-align: left;
 }
 </style>

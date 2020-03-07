@@ -16,15 +16,9 @@ export default class Footer extends Vue {
 
 <style scoped>
 ul {
-  position: absolute;
-  text-align: center;
-  left: 0;
-  right: 0;
-  list-style-type: none;
-  vertical-align: middle;
-  display: table-cell;
-  background-color: transparent;
-  margin-top: 2em;
+  grid-area: nav;
+  justify-self: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 430px) {
