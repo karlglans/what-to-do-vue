@@ -4,17 +4,11 @@
     @mouseleave="hover = false" noteIsChanged
     v-on:dblclick="$emit('focus-todo', note.id)"
   >
-    <!-- <Checkbox
-      v-if="activeNote !== note.id"
-      v-bind:note="note"
-      v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
-    /> -->
     <CheckboxSvg
       v-if="activeNote !== note.id"
       v-bind:note="note"
       v-on:noteIsChanged="$emit('noteIsChanged', note.id)"
     />
-    <!-- @click.native="$emit('noteIsChanged', note.id)" -->
     <label
       class="todo"
       v-if="activeNote !== note.id"
@@ -37,7 +31,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Note from '@/models/Note'
 import Edit from './Edit.vue'
-// import Checkbox from './Checkbox.vue';
 import DeleteButton from './DeleteButton.vue'
 import CheckboxSvg from './Checkbox'
 
@@ -64,23 +57,12 @@ label {
 .completed {
   color: #d9d9d9;
   text-decoration: line-through;
-  /* color: red; */
 }
 li {
   border-bottom: 1px solid #ededed;
   position: relative;
-  /* display: block; */
   display: list-item;
   min-height: 58px;
   width: 100%;
 }
-/* li button {
-  position: absolute;
-  right:80px;
-  top: 20px;
-  border: none;
-  background-color: transparent;
-  color: #cc9a9a;
-  cursor: pointer;
-} */
 </style>

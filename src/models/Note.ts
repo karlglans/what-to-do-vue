@@ -4,7 +4,7 @@ class Note {
   id: number;
   msg: string;
   compleated: boolean;
-  constructor(message: string, compleated = false) {
+  constructor(message = '', compleated = false) {
     this.id = -1;
     this.msg = message;
     this.compleated = compleated;
