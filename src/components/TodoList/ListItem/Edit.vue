@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Note from '../../../models/Note';
+import Note from '@/models/Note';
 
 @Component({name: 'Edit'})
 export default class Edit extends Vue {
@@ -34,7 +34,6 @@ export default class Edit extends Vue {
   box-sizing: border-box;
   font-size: 22px;
   color: #4d4d4d;
-  /* vertical-align: middle; */
   display: table-cell;
   padding: 0 20px;
   position: absolute;
@@ -42,8 +41,6 @@ export default class Edit extends Vue {
   height: 58px;
   width: calc(100% - 40px);
   border: 1px solid #777777;
-  -moz-box-shadow:    inset 0 0 10px #999;
-  -webkit-box-shadow: inset 0 0 10px #999;
   box-shadow:         inset 0 0 10px #999;
   outline: none;
 }

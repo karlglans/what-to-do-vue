@@ -8,7 +8,7 @@ export default class NoteStoreService {
   lastNoteId = 1
 
   static cleanup(note: Note) {
-    const copy = new Note('');
+    const copy = new Note();
     copy.copyFrom(note)
     return copy
   }

@@ -28,7 +28,7 @@ import Footer from './Footer'
 @Component({name: 'TodoList', components: {List, Footer, Input}})
 export default class TodoList extends Vue {
   todos: Note[] = [];
-  inputNote = new Note('')
+  inputNote = new Note()
   noteStore = new NoteStoreService()
 
   get notes() {
@@ -45,10 +45,10 @@ export default class TodoList extends Vue {
   }
 
   createNote() {
-    const note = Object.assign(new Note(''), this.inputNote)
+    const note = Object.assign(new Note(), this.inputNote) // also keeping prototype
     note.assignAnId()
     this.todos.push(note)
-    this.inputNote = new Note('')
+    this.inputNote = new Note()
     this.noteStore.addNote(note)
   }
 
@@ -78,7 +78,7 @@ export default class TodoList extends Vue {
     Note.setNextId(this.noteStore.findLastId() + 1)
     this.noteStore.getNotes()
       .sort(sortAscId)
-      .forEach(obj => this.todos.push(Object.assign(new Note(''), obj)))
+      .forEach(obj => this.todos.push(Object.assign(new Note(), obj)))
   }
 }
 </script>
@@ -91,8 +91,6 @@ export default class TodoList extends Vue {
   text-align: left;
   width: 100%;
   background-color: white;
-  -moz-box-shadow:    0 0 5px 5px #eee;
-  -webkit-box-shadow: 0 0 5px 5px #eee;
   box-shadow:         0 0 5px 5px #eee;
 }
 </style>
