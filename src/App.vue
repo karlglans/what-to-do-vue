@@ -2,18 +2,19 @@
   <div id="app">
     <main id="app-inner">
       <h1>todos</h1>
-      <TodoList />
+      <TodoList v-bind:noteStoreService="noteStoreService" />
     </main>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import TodoList from './components/TodoList';
+import { Component, Vue } from 'vue-property-decorator'
+import TodoList from './components/TodoList'
+import NoteStoreService from '@/services/NoteStoreService'
 
 @Component({name: 'App', components: {TodoList}})
 export default class App extends Vue {
-
+  noteStoreService = new NoteStoreService()
 }
 </script>
 
