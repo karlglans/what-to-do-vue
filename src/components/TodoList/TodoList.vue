@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import NoteStoreService, {sortAscId} from '@/services/NoteStoreService'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import Note from '@/models/Note'
 import Input from './Input'
 import List from './List.vue'
@@ -29,7 +29,9 @@ import Footer from './Footer'
 export default class TodoList extends Vue {
   todos: Note[] = [];
   inputNote = new Note()
-  noteStore = new NoteStoreService()
+
+  @Prop({required: true})
+  noteStoreService!: NoteStoreService
 
   get notes() {
     return this.todos
@@ -49,34 +51,34 @@ export default class TodoList extends Vue {
     note.assignAnId()
     this.todos.push(note)
     this.inputNote = new Note()
-    this.noteStore.addNote(note)
+    this.noteStoreService.addNote(note)
   }
 
   removeTodo(id: number) {
     const noteIdx = this.notes.findIndex( (note: Note) => note.id === id)
     if (noteIdx !== -1) {
       this.notes.splice(noteIdx, 1)
-      this.noteStore.removeNote(id)
+      this.noteStoreService.removeNote(id)
     }
   }
 
   handleNoteChanged(id: number) {
     const note = this.notes.find(n => n.id === id)
     if (note !== undefined) {
-      this.noteStore.store(note)
+      this.noteStoreService.store(note)
     }
   }
 
   removeCompleated() {
     this.todos
       .filter( (note: Note) => note.compleated)
-      .forEach(note => this.noteStore.removeNote(note.id))
+      .forEach(note => this.noteStoreService.removeNote(note.id))
     this.todos = this.todos.filter( (note: Note) => !note.compleated)
   }
 
   created() {
-    Note.setNextId(this.noteStore.findLastId() + 1)
-    this.noteStore.getNotes()
+    Note.setNextId(this.noteStoreService.findLastId() + 1)
+    this.noteStoreService.getNotes()
       .sort(sortAscId)
       .forEach(obj => this.todos.push(Object.assign(new Note(), obj)))
   }
